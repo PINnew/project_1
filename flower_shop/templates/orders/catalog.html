@@ -1,0 +1,9 @@
+<h1>Каталог цветов</h1>
+<ul>
+    {% for flower in flowers %}
+        <li>
+            {{ flower.name }} ({{ flower.color }}) - {{ flower.price }}₽
+            <a href="{% url 'create_order' flower.id %}">Заказать</a>
+        </li>
+    {% endfor %}
+</ul>
