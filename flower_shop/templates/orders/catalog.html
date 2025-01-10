@@ -1,9 +1,19 @@
-<h1>Каталог цветов</h1>
-<ul>
-    {% for flower in flowers %}
-        <li>
-            {{ flower.name }} ({{ flower.color }}) - {{ flower.price }}₽
-            <a href="{% url 'create_order' flower.id %}">Заказать</a>
-        </li>
-    {% endfor %}
-</ul>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог цветов</title>
+</head>
+<body>
+    <h1>Каталог цветов</h1>
+    <ul>
+        {% for flower in flowers %}
+            <li>
+                {{ flower.name }} ({{ flower.color }}) - {{ flower.price }}₽
+                <a href="{% url 'create_order' flower.id %}">Заказать</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+        <h1>Оформление заказа: {{ flower.name }} ({{ flower.color }})</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    <label>Количество:</label>
+                    <input type="number" name="quantity" min="1" required>
+                    <br>
+                    <label>Адрес доставки:</label>
+                    <textarea name="address" required></textarea>
+                    <br>
+                    <label>Комментарии:</label>
+                    <textarea name="comments"></textarea>
+                    <br>
+                    <button type="submit">Оформить заказ</button>
+                </form>
+
+</body>
+</html>
