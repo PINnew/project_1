@@ -10,12 +10,12 @@
     <h1 class="mb-4 text-center">Каталог цветов</h1>
     <div class="row">
         {% for flower in flowers %}
-            <div class="col-md-4 mb-4">
+            <div class="col-md-3 mb-4">
                 <div class="card">
                     <img src="{{ flower.image.url }}" class="card-img-top" alt="{{ flower.name }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ flower.name }} ({{ flower.color }})</h5>
-                        <p class="card-text">Цена: {{ flower.price }}₽</p>
+                        <p class="card-text">Цена за 1 штуку: {{ flower.price }}₽</p>
                         <a href="{% url 'create_order' flower.id %}" class="btn btn-primary">Заказать</a>
                     </div>
                 </div>
