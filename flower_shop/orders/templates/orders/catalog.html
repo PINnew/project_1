@@ -16,7 +16,13 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ flower.name }} ({{ flower.color }})</h5>
                         <p class="card-text">Цена за 1 штуку: {{ flower.price }}₽</p>
-                        <a href="{% url 'create_order' flower.id %}" class="btn btn-primary">Заказать</a>
+                        <form method="post" action="{% url 'add_to_cart' flower.id %}">
+                            {% csrf_token %}
+                            <div class="input-group mb-3">
+                                <input type="number" name="quantity" min="1" value="1" class="form-control" required>
+                                <button type="submit" class="btn btn-primary">Добавить в корзину</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
