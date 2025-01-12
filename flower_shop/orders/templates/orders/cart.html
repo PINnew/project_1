@@ -21,13 +21,34 @@
                 </tr>
             </thead>
             <tbody>
-                {% for item in cart.values %}
+                {% for item in cart_items %}
                     <tr>
                         <td>{{ item.name }}</td>
                         <td>{{ item.color }}</td>
                         <td>{{ item.price }}₽</td>
                         <td>{{ item.quantity }}</td>
-                        <td>{{ item.price|floatformat:2 }} }}</>
+                        <td>{{ item.item_total }}₽</td>
                     </tr>
                 {% endfor %}
-            <td.clo
+            </tbody>
+        </table>
+
+        <p class="text-end"><strong>Итоговая сумма: {{ total_price }}₽</strong></p>
+
+        <form method="post" action="{% url 'checkout' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="address" class="form-label">Адрес доставки:</label>
+                <textarea id="address" name="address" class="form-control" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="comments" class="form-label">Комментарии:</label>
+                <textarea id="comments" name="comments" class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Оформить заказ</button>
+        </form>
+    {% else %}
+        <p>Корзина пуста. <a href="{% url 'flower_catalog' %}">Вернуться в каталог</a></p>
+    {% endif %}
+</body>
+</html>

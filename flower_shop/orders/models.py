@@ -18,11 +18,14 @@ class Flower(models.Model):
 # Модель для заказов
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    flower = models.ForeignKey(Flower, on_delete=models.CASCADE)
+    total_price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
+    flower = models.ForeignKey('Flower', on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
-    address = models.TextField()
-    comments = models.TextField(blank=True, null=True)
-    total_price = models.DecimalField(max_digits=8, decimal_places=2)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
 
     def save(self, *args, **kwargs):
         # Автоматически вычисляем стоимость заказа при сохранении

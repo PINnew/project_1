@@ -86,6 +86,13 @@ DATABASES = {
 }
 
 
+# Настройки сессий
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Хранение сессий в базе данных
+SESSION_COOKIE_AGE = 1209600  # Время жизни сессии: 2 недели (в секундах)
+SESSION_SAVE_EVERY_REQUEST = True  # Сохранять сессию при каждом запросе
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Сессия не будет удаляться при закрытии браузера
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
